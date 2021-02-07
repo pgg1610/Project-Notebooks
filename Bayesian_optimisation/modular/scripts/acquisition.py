@@ -60,6 +60,7 @@ class AcquisitionFunction(object):
 EI_defaults = {"delta": 0.01,
                "noisy": False,
                "minimize_objective": True}
+               
 class ExpectedImprovement(AcquisitionFunction):
     """
     Expected improvement acquisition function. Amenable to either maximization
@@ -135,6 +136,7 @@ class ExpectedImprovement(AcquisitionFunction):
                                    "mean: %s" % (mu.shape,))
             else:
                 mu = mu.flatten()
+
             sigma = np.maximum(1e-15, sigma.flatten())
             # Bump small variances to prevent divide-by-zero.
             
@@ -155,6 +157,7 @@ class ExpectedImprovement(AcquisitionFunction):
         return self.params["minimize_objective"]
 
 CB_defaults = {"sigma": 1.96}
+
 class LowerConfidenceBound(AcquisitionFunction):
     """
     Lower confidence bound. This acquisition function may only be used for
